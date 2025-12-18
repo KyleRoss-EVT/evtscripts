@@ -6,7 +6,7 @@ from snowflake.connector import connect, SnowflakeConnection  # type: ignore
 from snowflake.connector.cursor import SnowflakeCursor
 
 
-def query_result_via_snowflake_connection(connection_name: str, sql: str) -> DataFrame:
+def query_result_via_snowflake_connection(connection_name: str, query: str) -> DataFrame:
     # Gets connection via connection name
     conn: SnowflakeConnection = connect(connection_name = connection_name)
 
@@ -14,12 +14,12 @@ def query_result_via_snowflake_connection(connection_name: str, sql: str) -> Dat
     df: Optional[pd.DataFrame] = None
 
     # Define the query to be run
-    sql = "SELECT * FROM EDW_ENT_PRD.CURATED.DIM_VH_CIN"
+    query = "SELECT * FROM EDW_ENT_PRD.CURATED.DIM_VH_CIN"
 
     # Temporarily init the cursor and execute the sql
     try:
         cursor: SnowflakeCursor = conn.cursor()
-        cursor.execute(sql)
+        cursor.execute(query)
 
         # Snowflake returns a pandas DataFrame here
         df = cursor.fetch_pandas_all()
