@@ -13,9 +13,6 @@ def query_result_via_snowflake_connection(connection_name: str, query: str) -> D
     # Initialise empty dataframe
     df: Optional[pd.DataFrame] = None
 
-    # Define the query to be run
-    query = "SELECT * FROM EDW_ENT_PRD.CURATED.DIM_VH_CIN"
-
     # Temporarily init the cursor and execute the sql
     try:
         cursor: SnowflakeCursor = conn.cursor()
