@@ -7,7 +7,7 @@ from evtscripts.datetime_utils.current_dt import current_datetime_str
 connection_name = "mm31132.ap-southeast-2"
 query = """
     SELECT * 
-    FROM EDW_ENT_PRD.CURATED.DIM_VH_CIN
+    FROM EDW_TRB_PRD.SEMANTIC.VW_THREDBO_EMPLIVE_PAYROLL_DAILY_PBI
 """
 output_name = "thredbo_emplive_profile_report"
 relative_output_path = "evtscripts/2025-12-18 - TRB EmpLive Dev/output/"
