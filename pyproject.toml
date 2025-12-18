@@ -1,0 +1,19 @@
+[project]
+name = "evtscripts"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Kyle Ross",email = "kyle_ross@evt.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "pandas (>=2.3.3,<3.0.0)",
+    "snowflake-connector-python (>=4.1.1,<5.0.0)",
+    "ydata-profiling (>=4.18.0,<5.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
