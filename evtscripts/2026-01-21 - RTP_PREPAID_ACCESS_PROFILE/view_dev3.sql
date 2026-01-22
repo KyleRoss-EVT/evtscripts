@@ -1,5 +1,10 @@
 SELECT * FROM EDW_TRB_PRD.CURATED.RTP_ACCESS_DETAIL LIMIT 1000;
 SELECT * FROM EDW_TRB_PRD.CURATED.RTP_ACCESS_USE_SUMM LIMIT 1000;
+-- access_date
+-- access_locn_code
+-- media_access_code
+-- access_prod_type_code
+-- access_code
 
 
 SELECT 
