@@ -6,11 +6,11 @@ from evtscripts.query_utils.build_output_paths import PathContext
 from evtscripts.query_utils.ydata_profiles import minimal_profile
 
 
-def print_in_brackets(text: str) -> str:
+def print_in_brackets(text: str):
     """Print stuff with some brackets around it, and datetime"""
     message_bracket_lh = "→→→"
     message_bracket_rh = "←←←"
-    return f"{message_bracket_lh}{current_datetime_str}|{text}{message_bracket_rh}"
+    print(f"{message_bracket_lh}{current_datetime_str}|{text}{message_bracket_rh}")
 
 
 # Define inputs and outputs
