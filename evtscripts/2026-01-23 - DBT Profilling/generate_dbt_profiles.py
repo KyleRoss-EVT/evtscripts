@@ -46,8 +46,11 @@ for path in target_paths:
     query = f"SELECT * FROM {table_name};"
     msg_suffix = f"profiling {table_name}"
     print_in_brackets(f"Starting {msg_suffix}")
-    minimal_profile(path, query)
-    print_in_brackets(f"Finished {msg_suffix}")
+    try:
+        minimal_profile(path, query)
+        print_in_brackets(f"Finished {msg_suffix}")
+    except ValueError:
+        print_in_brackets(f"Skipping {msg_suffix}, output exists")
 
 # End and print
 print_in_brackets("Script end")
