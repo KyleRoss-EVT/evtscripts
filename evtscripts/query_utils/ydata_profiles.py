@@ -8,7 +8,9 @@ from evtscripts.query_utils.query_snowflake import (
 from evtscripts.datetime_utils.current_dt import current_datetime_str
 
 
-def minimal_profile(output_folder: str, file_name: str, query: str) -> None:
+def minimal_profile(
+    output_folder: str, file_name: str, query: str, dt_in_name: bool = True
+) -> None:
     connection_name = "mm31132.ap-southeast-2"
 
     # Build path with checks
@@ -17,7 +19,10 @@ def minimal_profile(output_folder: str, file_name: str, query: str) -> None:
         raise TypeError(f"output_folder path: '{output_folder}' does not exist")
     if not folder_path.is_dir():
         raise TypeError(f"output_folder path: '{output_folder}' is not a directory")
-    output_file_path = folder_path / f"{file_name} {current_datetime_str()}.html"
+    output_file_path = (
+        folder_path
+        / f"{file_name} {' ' + current_datetime_str() if dt_in_name else ''}.html"
+    )
 
     # Get data
     df = query_result_via_snowflake_connection(connection_name, query)
