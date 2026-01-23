@@ -16,7 +16,7 @@ def print_in_brackets(text: str):
 
 
 # Define inputs and outputs
-output_folder = r"evtscripts/2026-01-23 - DBT Profilling/output"
+output_folder = r"evtscripts/2026-01-23 - DBT Profilling/output_z"
 schema_prefix = "DBT.DBT_silver.silver_"
 target_tables: List[List[str]] = [
     ["orders", " ORDER BY sale_date LIMIT 100000"],
