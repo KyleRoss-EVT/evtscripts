@@ -1,0 +1,53 @@
+from pathlib import Path
+
+from evtscripts.datetime_utils.current_dt import current_datetime_str
+from evtscripts.query_utils.build_output_paths import PathContext
+
+from evtscripts.query_utils.ydata_profiles import minimal_profile
+
+
+def print_in_brackets(text: str) -> str:
+    """Print stuff with some brackets around it, and datetime"""
+    message_bracket_lh = "→→→"
+    message_bracket_rh = "←←←"
+    return f"{message_bracket_lh}{current_datetime_str}|{text}{message_bracket_rh}"
+
+
+# Define inputs and outputs
+output_folder = r"evtscripts/2026-01-23 - DBT Profilling/output"
+schema_prefix = "DBT.DBT_silver.silver_"
+target_tables: list[str] = [
+    "orders",
+    "order_items",
+    "order_sub_items",
+    "sessions",
+    "screens",
+    "site",
+    "customers",
+    "sentiment",
+    "movies",
+    "visits",
+]
+
+# Run script
+print_in_brackets("Script start")
+
+# Build path context
+target_paths = [
+    PathContext(Path(output_folder), name, "html", dt_in_name=False)
+    for name in target_tables
+]
+print_in_brackets("Generated paths")
+
+# Iterate over the paths
+print_in_brackets("Starting iteration over paths")
+for path in target_paths:
+    table_name = f"{schema_prefix}{path.file_name}"
+    query = f"SELECT * FROM {table_name};"
+    msg_suffix = f"profiling {table_name}"
+    print_in_brackets(f"Starting {msg_suffix}")
+    minimal_profile(path, query)
+    print_in_brackets(f"Finished {msg_suffix}")
+
+# End and print
+print_in_brackets("Script end")
