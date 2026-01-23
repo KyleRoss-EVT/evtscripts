@@ -10,6 +10,7 @@ class PathContext:
     output_folder_path: Path
     file_name: str
     file_type: str
+    query_suffix: str = ""
     dt_in_name: bool = True
     raise_error_if_exists: bool = True
 
