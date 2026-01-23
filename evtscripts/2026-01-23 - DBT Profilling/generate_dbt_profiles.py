@@ -4,6 +4,7 @@ from evtscripts.datetime_utils.current_dt import current_datetime_str
 from evtscripts.query_utils.build_output_paths import PathContext
 
 from evtscripts.query_utils.ydata_profiles import minimal_profile
+from evtscripts.query_utils.query_snowflake import query_result_via_snowflake_connection
 
 
 def print_in_brackets(text: str):
@@ -43,11 +44,19 @@ print_in_brackets("Generated paths")
 print_in_brackets("Starting iteration over paths")
 for path in target_paths:
     table_name = f"{schema_prefix}{path.file_name}"
+
     query = f"SELECT * FROM {table_name};"
+    query_prefix = f"query of {table_name}"
+
+    print_in_brackets(f"Starting {query_prefix}")
+    df = query_result_via_snowflake_connection("mm31132.ap-southeast-2", query)
+    print_in_brackets(f"Finished {query_prefix}")
+
     msg_suffix = f"profiling {table_name}"
     print_in_brackets(f"Starting {msg_suffix}")
+
     try:
-        minimal_profile(path, query)
+        minimal_profile(path, df)
         print_in_brackets(f"Finished {msg_suffix}")
     except ValueError:
         print_in_brackets(f"Skipping {msg_suffix}, output exists")
