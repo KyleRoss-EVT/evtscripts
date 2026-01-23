@@ -26,7 +26,7 @@ class PathContext:
             )
         output_file_path = (
             folder_path
-            / f"{self.file_name}{' ' + current_datetime_str() if self.dt_in_name else ''}{self.file_type}"
+            / f"{self.file_name}{' ' + current_datetime_str() if self.dt_in_name else ''}.{self.file_type}"
         )
         if self.raise_error_if_exists and output_file_path.exists():
             raise ValueError(

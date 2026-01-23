@@ -23,7 +23,7 @@ if __name__ == "__main__":
     path_context = PathContext(
         Path("evtscripts/query_utils/example"),
         "minimal_data_profile_main DIM_VH_SITE",
-        ".html",
+        "html",
         dt_in_name=False,
     )
     minimal_profile(path_context, "SELECT * FROM EDW_ENT_PRD.CURATED.DIM_VH_SITE")
