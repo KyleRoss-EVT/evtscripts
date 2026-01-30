@@ -30,7 +30,7 @@ target_tables: List[List[str]] = [
 ]
 
 # Control variables
-run_query = True
+run_query = False
 create_detail_file = True
 
 # Run script
@@ -82,7 +82,7 @@ for path in target_paths:
 if create_detail_file:
     detail_path = PathContext(
         Path(output_folder),
-        project_name + "query & file details",
+        project_name + " - query & file details",
         "txt",
         dt_in_name=False,
         raise_error_if_exists=False,
