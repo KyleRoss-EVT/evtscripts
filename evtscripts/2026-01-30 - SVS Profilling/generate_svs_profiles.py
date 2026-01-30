@@ -19,11 +19,10 @@ def print_in_brackets(text: str):
 output_folder = r"evtscripts/2026-01-30 - SVS Profilling/output"
 schema_prefix = "EDW_PRD.CURATED."
 target_tables: List[List[str]] = [
-    # ["SVS_MEMBER", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
-    # ["SVS_EVT_MEMBER_SUMMARY", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
-    ["SVS_BRAZE_EVT_MEMBER_CHANGE", " ORDER BY PROCESS_DATE DESC LIMIT 100000"],
-    # ["SVS_BRAZE_EVT_MEMBER_CHANGE_SNAPSHOT", " ORDER BY SNAPSHOT_DATE DESC DESC LIMIT 100000"],
-    # ["SVS_EVT_MEMBER", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
+    ["SVS_MEMBER", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
+    ["SVS_EVT_MEMBER_SUMMARY", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
+    ["SVS_BRAZE_EVT_MEMBER_CHANGE_SNAPSHOT", " ORDER BY SNAPSHOT_DATE DESC DESC LIMIT 100000"],
+    ["SVS_EVT_MEMBER", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
 ]
 
 # Run script
@@ -53,11 +52,7 @@ for path in target_paths:
     msg_suffix = f"profiling {table_name}"
     print_in_brackets(f"Starting {msg_suffix}")
 
-    try:
-        minimal_profile(path, df)
-        print_in_brackets(f"Finished {msg_suffix}")
-    except ValueError:
-        print_in_brackets(f"Skipping {msg_suffix}, output exists")
+    minimal_profile(path, df)
 
 # End and print
 print_in_brackets("Script end")
