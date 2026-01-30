@@ -82,7 +82,7 @@ for path in target_paths:
 if create_detail_file:
     detail_path = PathContext(
         Path(output_folder),
-        project_name,
+        project_name + "query & file details",
         "txt",
         dt_in_name=False,
         raise_error_if_exists=False,
