@@ -20,17 +20,17 @@ project_name = "SVS Profiling"
 output_folder = r"evtscripts/2026-01-30 - SVS Profilling/output"
 schema_prefix = "EDW_PRD.CURATED."
 target_tables: List[List[str]] = [
-    ["SVS_MEMBER", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
-    ["SVS_EVT_MEMBER_SUMMARY", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
+    ["SVS_MEMBER", " LIMIT 100000"],
+    ["SVS_EVT_MEMBER_SUMMARY", " LIMIT 100000"],
     [
         "SVS_BRAZE_EVT_MEMBER_CHANGE_SNAPSHOT",
         " ORDER BY SNAPSHOT_DATE DESC LIMIT 100000",
     ],
-    ["SVS_EVT_MEMBER", " ORDER BY UPDATE_DATE DESC LIMIT 100000"],
+    ["SVS_EVT_MEMBER", " LIMIT 100000"],
 ]
 
 # Control variables
-run_query = False
+run_query = True
 create_detail_file = True
 
 # Run script
